@@ -32,6 +32,7 @@ various topics
 1. **Node** *Install*, *Start*, *Stop*
 1. **Mongo** *Install*, *Start*, *Stop*, *Snapshot*, *Restore*, *Drop*
 1. **Managing Environment vars**
+1. **Blue / Green / Round**
 1. **Docker**
 1. **Heroku**
 
@@ -71,6 +72,8 @@ various topics
 1. **Wizards**
 
 ### Analytics
+
+### Security
 
 ## Mobile
 *Don't Be Crazy*
