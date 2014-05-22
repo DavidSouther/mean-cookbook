@@ -4,20 +4,36 @@ A collection of short articles, 4 or 5 paragraphs of 1 or 2 gists covering
 various topics
 
 ## Project Layout
+
+### Components
+1. **Deploy**
 1. **Server**
 1. **Client**
-1. **Deploy**
 1. **Features**
+
+### Languages
+
+1. **script**: *JavaScript* vs *Coffee* vs *Dart*
+1. **markup**: *HTML* vs *Jade*
+1. **styling**: *css* vs *Stylus* vs *SASS*
+
+### Build Toolchain
+
+1. **Grunt**
+1. **Gulp**
+1. **Browserify**
 
 ## Testing
 ### Server
 1. **Supertest**
 1. **Logging**
+1. **Coverage**
 
 ### Angular
 1. **$httpBackend**
 1. **Managing Injections**
 1. **Rendering Directives**
+1. **Coverage**
 
 ### Integration / Feature
 1. **cucubmberjs**, *qcumber*, *qcumberbatch*
@@ -38,15 +54,21 @@ various topics
 
 ## Client
 ### Organization
-1. **service**
-1. **controller**
-1. **directive**
+1. **Services**
+1. **Controllers**
+1. **Directives**
+1. **Filters**
+1. **Providers**
 
 ### Data
 1. **$http**
 1. **$resource**
 1. **Restangular**
 1. **Sockets**
+
+### Forms
+1.
+1. **ngMessage**
 
 ### Utility Directives
 1. **Using ng-model**
@@ -56,7 +78,12 @@ various topics
 ### Styles
 1. **Bootstrap**
 1. **BEM**
-1. **all / print / screen**
+1. **all** / **print** / **screen**
+
+### Animation
+1. **CSS**
+1. **ngAnimate**
+1. **Staggering Animations**
 
 ## Advanced Client
 
