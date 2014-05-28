@@ -67,11 +67,13 @@ various topics
 1. **Sockets**
 
 ### Forms
-1.
+1. **css**
+1. **ngModelOptions**
+1. **Custom Validation**
 1. **ngMessage**
 
 ### Utility Directives
-1. **Using ng-model**
+1. **Using ngModel**
 1. **th(sort)**
 1. **select**
 
@@ -81,7 +83,7 @@ various topics
 1. **all** / **print** / **screen**
 
 ### Animation
-1. **CSS**
+1. **css**
 1. **ngAnimate**
 1. **Staggering Animations**
 
@@ -98,7 +100,20 @@ various topics
 1. **Modals**
 1. **Wizards**
 
+### Wrapping HTML5 as Services
+
+1. **FileReader**
+1. **WebRTC**
+
+### Visualizations
+
+1. **d3 interop**
+1. **SVG**
+1. **WebGL**
+
 ### Analytics
+
+1. **segment.io**
 
 ### Security
 
@@ -106,6 +121,12 @@ various topics
 *Don't Be Crazy*
 
 ### Ionic
+
+### Cordova
+
+1. **Bundling**
+1. **Installing**
+1. **Phone Features**
 
 ## Server
 ### Logging
@@ -125,3 +146,12 @@ various topics
 1. **Local**
 1. **Google**
 1. **Locking down resources**
+
+## Realtime
+
+Realtime data takes a special level of consideration that cuts across the server
+and client.
+
+### Distributed Eventing
+
+### socket.io
