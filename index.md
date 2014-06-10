@@ -20,7 +20,7 @@ interface framework; and NodeJS, a highly asynchronous server platform written
 in Javascript. This approach takes some frankly fantastic technologies, and
 allows development teams to focus their efforts in the Javascript space. This
 provides real benefits to teams in following a single set of best practices;
-due to its inherrent asynchronous nature, the Javascript Callback and Promises
+due to its inherent asynchronous nature, the Javascript Callback and Promises
 patterns are leveraged at all layers of the stack. That said, the approach is
 highly decoupled, and any piece can be swapped out for a more appropriate
 technology as needed.
@@ -70,17 +70,19 @@ style concerns.
 
 1. **script**: *JavaScript* vs *Coffee* vs *Dart*
 1. **markup**: *HTML* vs *Jade*
-1. **styling**: *css* vs *Stylus* vs *SASS*
+1. **styling**: *css* vs *Stylus* vs *SASS* vs *Less*
 
 ### Build Toolchain
 
-1. **Grunt**
-1. **Gulp**
-1. **Browserify**
+1. **Grunt** *Task Configuration*
+1. **Gulp** *Build Pipelines*
+1. **Closure Compiler** *Static type safety*
+
+### Static Typing
 
 ## Testing
 
-Testing is the best sane technique for developers to have confidence in their
+Testing is a great sane technique for developers to have confidence in their
 code. While learning testing can be daunting to many teams, the community
 support and tooling around testing in the MEAN world is truly sublime. Teams
 don't have to test first, but with the techniques in this chapter, they can test
@@ -188,8 +190,10 @@ point for adding increasingly fantastic functionality to your SPA.
 
 ### Wrapping HTML5 as Services
 
+1. **LocalStorage**
 1. **FileReader**
-1. **WebRTC**
+1. **Geolocation**
+1. **WebRTC** *Audio*, *Video*, *P2P*
 
 ### Visualizations
 
@@ -203,12 +207,18 @@ point for adding increasingly fantastic functionality to your SPA.
 
 ### Security
 
+### Performance
+
+1. **3d rendering**
+
 ## Mobile
 *Don't Be Crazy*
 
 By following that simple rule, your SPA will work on a mobile device. With a few
 wrapper technologies, your SPA will be its own distributable, on both the Play
 and App stores (or distributed internally, for internal tools).
+
+### Application Cache
 
 ### Rarely On
 
@@ -232,6 +242,10 @@ API pays back in spades.
 ### Logging
 1. **winston**
 1. **What to Log**
+
+### File System
+1. **fs**
+1. **Q.denodeify**
 
 ### Mongo
 1. **mongo native driver**
