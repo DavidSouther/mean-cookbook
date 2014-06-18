@@ -1,64 +1,16 @@
 # MEAN FAQ
 
-The time of the Single Page App has come. Web development since even before
-Rails in 2008 has been well served by the 3-tier architecture, with a web server
-running Ruby, PHP, or Python pulling data from MySQL or Postgress, and rendering
-a mostly static HTML asset. With the great strides in HTML5 browser
-technologies, since 2012 it's been feasible to build Single Page Applications,
-and as of 2014 it is practical. A SPA, rather than sending fully rendered HTML
-for ever request, serves a bundle of static assets that contain code for the
-entire site. This code then calls services for data through APIs, allowing
-much flexibility in a system's architecture. This approach can still be 3-tier,
-but now the web tier is responsible for serving data, not HTML.
+The time of the Single Page App has come. Web development, even before Rails, has been well served by the 3-tier architecture. A web server runs Ruby, PHP, or Python pulls data from MySQL or Postgress, and renders a mostly static HTML asset. With the great strides in HTML5 browser technologies, since 2012 it's been feasible to build Single Page Applications. As of 2014, it's practical. A SPA, rather than sending rendered HTML for ever request, serves a bundle of static assets that contain code for the entire site. This code calls services for data via restful APIs, allowing much flexibility in a system's architecture. This approach can still be 3-tier, but the web tier handles data, not HTML.
 
-There are numerous frameworks and technologies to choose between, for all layers
-of the SPA stack. One set, becoming a buzzword in itself, is the MEAN approach.
-A play on LAMP,  MEAN is a collection of technologies for building a SPA stack -
-MongoDB, a schemaless, disk-backed database; ExpressJS, a highly extensible
-middleware based HTTP handler; AngularJS, a powerful and expressive javascript
-interface framework; and NodeJS, a highly asynchronous server platform written
-in Javascript. This approach takes some frankly fantastic technologies, and
-allows development teams to focus their efforts in the Javascript space. This
-provides real benefits to teams in following a single set of best practices;
-due to its inherent asynchronous nature, the Javascript Callback and Promises
-patterns are leveraged at all layers of the stack. That said, the approach is
-highly decoupled, and any piece can be swapped out for a more appropriate
-technology as needed.
+There are numerous frameworks and technologies to choose between, for all layers of the SPA stack. One set, becoming a buzzword in itself, is the MEAN approach. A play on LAMP,  MEAN is a collection of technologies for building a SPA stack. *M*ongoDB is a schemaless, disk-backed database. *E*xpressJS is an extensible middleware based HTTP handler. *A*ngularJS is a powerful and expressive javascript framework. *N*odeJS, a highly asynchronous server platform written in Javascript. The MEAN approach takes some fantastic technologies and allows development teams to focus their efforts in Javascript. This provides real benefits to teams in following a single set of best practices. That said, the approach is highly decoupled, and teams can swap out any piece for a more appropriate technology as needed.
 
-Alas, there are no frameworks as solid as Ruby on Rails for building SPAs. This
-isn't a bad thing - because the technologies for building SPAs are so
-decouplable, rather than providing a single architecture for every team to plug
-in to, it is better to learn where each of the pieces fit together, and how to
-use each effectively. This Cookbook is a collection of those best practices and
-techniques, taken from experience building these systems over the past few
-years. Taken a la cart, a team or developer can find good tutorials and info on
-building certain parts of their application. Taken as a whole, a team can build
-a full SPA stack that fits their business use case like a glove.
+Alas, there are no frameworks as solid as Ruby on Rails for building SPAs. This isn't a bad thing. Because the technologies for building SPAs are so decouplable, rather than providing a single architecture for every team to plug in to, it is better to learn where each of the pieces fit together, and how to use each effectively. This Cookbook is a collection of those best practices and techniques, taken from experience building these systems over the past few years. Taken a la cart, a team or developer can find good tutorials and info on building certain parts of their application. Taken as a whole, a team can build a full SPA stack that fits their business use case like a glove.
 
 ## Project Layout
 
-Choosing a project layout has a surprising number of consequences for a team.
-The Java approach and conventional wisdom to date have separated projects down
-language and environment seams, keeping separate folders for main/ and test/,
-and inside separate folders for language, src/main/scala/ and src/main/java.
-Rails and Rails-likes split the project along OO seams, creating different
-directories for app/ and test/, and inside app for controllers/ and templates/.
-These approaches place the framework concepts front and center, making people
-think about the tools first and the business model second. To go from a
-controller to a template requires navigating up and then back down the directory
-structure.
+Choosing a project layout has a surprising number of consequences for a team. The Java approach and conventional wisdom separatea projects along language and environment seams. There are separate folders for `main/` and `test/`, and separate folders for language, `src/scala/com/...` and `src/java/...`. Rails and Rails-likes split the project along OO seams, creating different directories for `app/` and `test/`. Inside `app/` and `test/` are folders for `controllers/` and `templates/`. These approaches place the framework concepts front and center, forcing developers to think about the tools first and the business model second. To go from a controller to a template requires navigating up and then back down the directory structure.
 
-A better conceptual approach is to break the application along business model
-seams. There are two main reasons for doing so: it places the conceptual model
-of the business itself at the forefront of development, and allows easier mix &
-match of the various transpiled languages. Putting the business model and logic
-first builds in a ubiquitous language for the project, a very useful concept
-from the field of Domain Driven Development. Team members see their business
-components first, and talk about the specific controller, schema, or template
-later. While mixing languages makes the build tools take slightly more
-configuration, it usually falls to the difference in moving `coffee/**` to
-`**/*.coffee`. Teams can choose languages that are most comfortable to their
-style concerns.
+A better conceptual approach is to break the application along business model seams. There are good reasons for doing so. It places the conceptual model of the business itself at the forefront of development. This allows easier mix & match of the various transpiled languages. Putting the business model and logic first builds in a ubiquitous language for the project, a useful concept from the field of Domain Driven Development. Team members see their business components first, and talk about the specific controller, schema, or template later. While mixing languages makes the build tools take more configuration, it usually falls to the difference in moving `coffee/**` to `**/*.coffee`. Teams can choose languages that are most comfortable to their style concerns.
 
 ### Components
 1. **Deploy**
@@ -82,13 +34,7 @@ style concerns.
 
 ## Testing
 
-Testing is a great sane technique for developers to have confidence in their
-code. While learning testing can be daunting to many teams, the community
-support and tooling around testing in the MEAN world is truly sublime. Teams
-don't have to test first, but with the techniques in this chapter, they can test
-when they want. These recipes cover all levels of the SPA stack, from unit
-testing through full user integration and regression tests, with code coverage
-tools along the way.
+Testing is a great, sane technique for developers to have confidence in their code. While learning how to test can be daunting to many teams, the community support and tooling for testing in the MEAN world is sublime. Teams don't have to test first, but with the techniques in this chapter, they can test when they want. These recipes cover all levels of the SPA stack, from unit testing through full user integration and regression tests, with code coverage tools along the way.
 
 ### Server
 1. **Supertest**
@@ -112,13 +58,7 @@ tools along the way.
 
 ## Deployment
 
-Deployment for many can be a black box, something handled by the SysOps team and
-never shall the Devs and Ops meet. While this has worked for many teams and
-organizations, the experiences and successes of continuous integration at places
-like Etsy speak to the benefits of a DevOps culture. These recipes provide some
-techniques for handling the deployment of each of the main pieces of the MEAN
-stack, and provide a template for orchestrating much larger and more complex
-deployments.
+Deployment for many can be a black box, something handled by the SysOps team and never shall the Devs and Ops meet. While this has worked for many teams and organizations, the experiences and successes of continuous integration at places like Etsy speak to the benefits of a DevOps culture. These recipes provide techniques to handle the deployment of each of the main pieces of the MEAN stack. They also provide a template for orchestrating much larger and more complex deployments.
 
 1. **Node** *Install*, *Start*, *Stop*
 1. **Mongo** *Install*, *Start*, *Stop*, *Snapshot*, *Restore*, *Drop*
@@ -129,13 +69,7 @@ deployments.
 
 ## Client
 
-The client, in the MEAN stack, is anything that runs on a user's device, outside
-the server. In practice, this means code that is running in a browser, or in a
-WebView on a mobile device. Angular provides numerous framework utilities,
-including dependency injection for application management; a complete MVVM
-architecture; extensible HTML components; and a full http & REST suite. There
-are also many techniques to manage CSS, a common contributor of technical debt
-to large web applications.
+The client, in the MEAN stack, is anything that runs on a user's device, outside the server. In practice, this means code that is running in a browser, or in a WebView on a mobile device. Angular provides many framework utilities, including dependency injection for application management; a complete MVVM architecture; extensible HTML components; and a full http & REST suite. There are also many techniques to manage CSS, a common contributor of technical debt to large web applications.
 
 ### Organization
 1. **Services**
@@ -173,9 +107,7 @@ to large web applications.
 
 ## Advanced Client
 
-Injecting outside the box, Angular provides a great paradigm to build incredibly
-rich user interfaces and components. These recipes should serve as a jumping off
-point for adding increasingly fantastic functionality to your SPA.
+Injecting outside the box, Angular provides a great paradigm to build fantastically rich user interfaces and components. These recipes should serve as a jumping off point for adding wicked functionality to your SPA.
 
 ### Routing / History / State
 
@@ -214,9 +146,7 @@ point for adding increasingly fantastic functionality to your SPA.
 ## Mobile
 *Don't Be Crazy*
 
-By following that simple rule, your SPA will work on a mobile device. With a few
-wrapper technologies, your SPA will be its own distributable, on both the Play
-and App stores (or distributed internally, for internal tools).
+By following that simple rule, your SPA will work on a mobile device. With a few wrapper technologies, your SPA will be its own distributable, on both the Play and App stores. You can also distribute internally, for internal tools.
 
 ### Application Cache
 
@@ -232,12 +162,7 @@ and App stores (or distributed internally, for internal tools).
 
 ## Server
 
-The Server is anything that runs on your hardware, in the cloud or data center.
-The server should be focused entirely on providing an API for your business'
-data. Whether this is only privately accessible, or open for your customers to
-use responsibly, the server recipes will get you from zero to REST. The concepts
-are applicable across other server backends, and the flexibility of a RESTful
-API pays back in spades.
+The Server is anything that runs on your hardware, in the cloud or data center. The server should focus only on providing an API for your business' data. Whether this is only privately accessible, or open for your customers to use responsibly, the server recipes will get you from zero to REST. The concepts are applicable across other server backends, and the flexibility of a RESTful API pays back in spades.
 
 ### Logging
 1. **winston**
@@ -263,8 +188,7 @@ API pays back in spades.
 
 ## Realtime
 
-Realtime data takes a special level of consideration that cuts across the server
-and client.
+Realtime data takes a special level of consideration that cuts across the server and client.
 
 ### Distributed Eventing
 
