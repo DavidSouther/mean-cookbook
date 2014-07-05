@@ -1,3 +1,4 @@
+
 # MEAN FAQ
 
 The time of the Single Page App has come. Web development, even before Rails, has been well served by the 3-tier architecture. A web server runs Ruby, PHP, or Python pulls data from MySQL or Postgress, and renders a mostly static HTML asset. With the great strides in HTML5 browser technologies, since 2012 it's been feasible to build Single Page Applications. As of 2014, it's practical. A SPA, rather than sending rendered HTML for ever request, serves a bundle of static assets that contain code for the entire site. This code calls services for data via restful APIs, allowing much flexibility in a system's architecture. This approach can still be 3-tier, but the web tier handles data, not HTML.

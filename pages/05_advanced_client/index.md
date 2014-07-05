@@ -1,4 +1,6 @@
-## Advanced Client
+---
+title: Advanced Client
+---
 
 Injecting outside the box, Angular provides a great paradigm to build fantastically rich user interfaces and components. These recipes should serve as a jumping off point for adding wicked functionality to your SPA.
 

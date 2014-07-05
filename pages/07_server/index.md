@@ -1,4 +1,6 @@
-## Server
+---
+title: Server
+---
 
 The Server is anything that runs on your hardware, in the cloud or data center. The server should focus only on providing an API for your business' data. Whether this is only privately accessible, or open for your customers to use responsibly, the server recipes will get you from zero to REST. The concepts are applicable across other server backends, and the flexibility of a RESTful API pays back in spades.
 
