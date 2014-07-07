@@ -23,7 +23,8 @@ The files in the project root should be limited to editable, project wide config
 ├── src # The project's source code. The only directory whose code can be edited.
 ├── .coffeelintrc # Project coffee linting rules.
 ├── .jshintrc # Project javascript linting rules.
-├── .gitignore # Project git ignores, fileed with above directories.
+├── .jscsrc # Project javascript code style rules.
+├── .gitignore # Project git ignores, which includes above directories.
 ├── Gruntfile.coffee # Grunt build configuration (or Gulpfile.js, etc).
 ├── README.md # Project README. Should include a brief overview of the project and a quickstart guide, at minimum.
 ├── app.js # Backend entry point to the application, by convention.
@@ -34,7 +35,7 @@ The files in the project root should be limited to editable, project wide config
 
 ## Discussion
 
-Keeping a clean separation between editable and generated files is critical as projects grow. In a typical MEAN application, there are folders reserved for dependencies (`bower_components` and `node_modules`), folders for runtime files (`log`, `run`, and `tmp`), folders for intermediate transpilation steps (`build`), and possibly more. Project wide configuration settings (`coffeelint`, `jslint`) apply to every area, and don't need duplicating. Some files are expected by convention - `README.md` by GitHub & other source control viewers, and `app.js` by [Phusion Passenger][passenger] and other application monitors.
+Keeping a clean separation between editable and generated files is critical as an application's codebase grows. In a typical MEAN application, there are folders reserved for dependencies (`bower_components` and `node_modules`), folders for runtime files (`log`, `run`, and `tmp`), folders for intermediate transpilation steps (`build`), and possibly more. Project wide configuration settings (`coffeelint`, `jslint`) apply to every area, and don't need duplicating. Some files are expected by convention: examples being `README.md`, which is used by GitHub & other source control viewers, and `app.js` which is expected for [Phusion Passenger][passenger] and other application monitors.
 
 [git]: http://git-scm.com/
 [bower]: http://bower.io/
