@@ -103,6 +103,249 @@ Similar to the [server layout][server_layout], the client code is separated alon
 
 There are many ways to turn this directory structure into served code on the client. [Grunt][gruntjs] is the most popular JS build tool, though many others are also viable. These tools take the source directory, pass it through a series of transformations, and store the finished file elsewhere in the project structure (usually `build/`). Other tools, like [stassets][stassets], work as an express middleware. Because they operate entirely in memory and don't write to disk, these are much faster; however, they generally offer less flexibility. Stassets is built to handle project structures like this one.
 
+A base Gruntfile could look like this.
+
+```coffeescript
+module.exports = (grunt)->
+    flatten = (a, b)-> a.concat b
+
+    module = 'teals.scavenger'
+
+
+    ###
+    This array defines watch patterns for the application's client files.
+    Templates must be in jade format; services, controllers, directives, etc are
+    coffee. Any other files, like providers or custom model modules, could be
+    added here.
+    ###
+    appFileOrdering = [
+        '**/template.jade'
+        '**/main.coffee'
+        '**/service.coffee'
+        '**/controller.coffee'
+        '**/directive.coffee'
+    ].map((a)->"src/client/#{a}").reduce flatten, []
+
+
+    ###
+    grunt.Config is a convenience property defined in `grunt-recurse`. It allows
+    gruntfiles to be more iterative in defining their configuartion.
+    ###
+    grunt.Config =
+        ###
+        With `grunt watch:client`, watch any client files, including tests.
+        ###
+        watch:
+            client:
+                files: [
+                    'src/client/**/*.js'
+                    'src/client/**/*.coffee'
+                    'src/client/**/*.jade'
+                    'src/client/**/*.styl'
+                ]
+                tasks: [
+                    'client'
+                ]
+                options:
+                    spawn: false
+
+        ###
+        Jade itself only compiles the index.
+        ###
+        jade:
+            index:
+                files: {
+                    'build/client/index.html': ['src/client/index.jade']
+                }
+        ###
+        ng-jade is a custom jade compiler, that injects the compiled jade
+        html into an angular module, in this case, named `teals.templates`. Any
+        angular directive that specifies a `templateUrl` can specify the folder
+        path to the file, eg the `**` portion of the `src` pattern, to load the
+        rendered HTML.
+        ###
+        ngjade:
+            templates:
+                files: [{
+                    expand: false
+                    src: ['src/client/**/template.jade']
+                    dest: 'build/client/templates.js'
+                }]
+                options:
+                    moduleName: 'teals.templates'
+                    processName: (filepath)->
+                        r_template = /^src\/client\/(.*)\/template.(html|jade)$/
+                        path = filepath.replace r_template, '$1'
+                    newModule: true
+        ###
+        There are three types of stylus targets, one for each of `all` media
+        types, `screen` media types, and `print` media types. Adding more stylus
+        targets, eg for `braile` or other css media types, is perfectly fine.
+        ###
+        stylus:
+            options:
+                paths: [
+                    'src/client/stylus/definitions'
+                ]
+                import: [
+                    'mixins'
+                    'variables'
+                    'nib'
+                ]
+            all:
+                files:
+                    'build/client/all.css': "src/client/**/all.styl"
+            print:
+                files:
+                    'build/client/print.css': "src/client/**/print.styl"
+            screen:
+                files:
+                    'build/client/screen.css': "src/client/**/screen.styl"
+
+        ###
+        Two sets of files get copied as-is: the client assets, and the needed
+        vendor files out of bower_components. The bower_components could also
+        use `grunt-contrib-concat` to build a compiled `vendors.js`.
+        ###
+        copy:
+            client:
+                files: [
+                    expand: true
+                    cwd: 'src/client'
+                    src: ['index.html', 'assets/**/*']
+                    dest: 'build/client'
+                ]
+            vendors:
+                files: [
+                    expand: true
+                    cwd: 'bower_components'
+                    src: [
+                        'angular/angular.*'
+                        'angular-route/angular*'
+                        'angular-cookies/angular*'
+                        'angular-resource/angular*'
+                        # 'angular-ui/build/**/*'
+                        'bootstrap/dist/**/*'
+                        'angular-bootstrap/**/*'
+                        'angular-ui-codemirror/**/*'
+                        'codemirror/**/*'
+                        'css-social-buttons/css/*'
+                    ]
+                    dest: 'build/client/vendors'
+                ]
+
+        ###
+        All the application coffee scripts are joined and compiled in order. The
+        angular module definition tools are used to manage client internal
+        dependencies.
+        ###
+        coffee:
+            options:
+                bare: false
+                join: true
+            client:
+                files:
+                    'build/client/app.js': appFileOrdering
+                        .filter (file)-> file.match(/\.coffee$/)
+
+    # butt - Browser Under Test Tools
+    butt = []
+    unless process.env['DEBUG']
+        if process.env['BAMBOO']
+            butt = ['PhantomJS']
+        else
+            butt = ['Chrome']
+
+    preprocessors =
+        'src/client/**/*test.coffee': [ 'coffee' ]
+        'src/client/**/*mock.coffee': [ 'coffee' ]
+        'src/client/tools/*.coffee': [ 'coffee' ]
+        'src/client/**/*.jade': [ 'jade', 'ng-html2js' ]
+
+    cover =
+        if process.env.DEBUG and not process.env.COVER
+            'coffee'
+        else
+            'coverage'
+
+    for type in appFileOrdering
+        if type.indexOf('.coffee') > -1
+            preprocessors[type] = [cover]
+
+
+    ###
+    After defining a few properties, including whether to run coverage
+    preprocessors, grunt-recurse's Config property allows us to continue adding
+    config definitions.
+    ###
+    grunt.Config =
+        karma:
+            ###
+            Configure Karma to run mocha tests on the project.
+            ###
+            client:
+                options:
+                    browsers: butt
+                    frameworks: [ 'mocha', 'sinon-chai' ]
+                    reporters: [ 'spec', 'junit', 'coverage' ]
+                    singleRun: true,
+                    logLevel: 'INFO'
+                    ###
+                    Preprocessors include ng-jade, coverage, etc.
+                    ###
+                    preprocessors: preprocessors
+                    files: [
+                        # 'bower_components/jquery/jquery.js'
+                        'bower_components/angular/angular.js'
+                        'bower_components/angular-route/angular-route.js'
+                        'bower_components/angular-resource/angular-resource.js'
+                        # 'bower_components/angular-animate/angular-animate.js'
+                        'bower_components/angular-cookies/angular-cookies.js'
+                        'bower_components/angular-mocks/angular-mocks.js'
+                        'src/client/**/*mock.coffee'
+                        'src/client/tools/**/*'
+                        appFileOrdering
+                        grunt.expandFileArg('src/client', '**/')
+                    ].reduce(flatten, [])
+                    ngHtml2JsPreprocessor:
+                        cacheIdFromPath: jadeTemplateId
+                        moduleName: 'teals.templates'
+                    junitReporter:
+                        outputFile: 'build/reports/karma.xml'
+                    coverageReporter:
+                        type: 'lcov'
+                        dir: 'build/reports/coverage/'
+
+    grunt.registerTask 'testClient',
+        'Run karma tests against the client.',
+        [
+            'karma:client'
+        ]
+
+    grunt.registerTask 'buildClient',
+        'Prepare the build/ directory with static client files.',
+        [
+            'copy:client'
+            'copy:vendors'
+            'ngjade:templates'
+            'jade:index'
+            'coffee:client'
+            'stylus'
+        ]
+
+    grunt.registerTask 'client',
+        'Prepare and test the client.',
+        [
+            'testClient'
+            'buildClient'
+        ]
+```
+
+This Gruntfile is fully featured and used in several projects. It takes `src/client`, and builds those to this.
+
+```
+### TODO tree of compiled build/ folder.
+```
 
 [server_layout]: /01_layout/01_areas/03_server
 [stassets]: https://www.npmjs.org/package/stassets
