@@ -8,7 +8,7 @@ Components in an Angular application have several ways to fit into Angular's mod
 
 ### Solution
 
-```
+```tree
 .
 └── src
     ├── client

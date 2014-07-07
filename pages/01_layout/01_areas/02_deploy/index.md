@@ -10,7 +10,7 @@ A MEAN application has several server-side requirements at runtime, all of which
 
 Within the project's `src` folder, create an area for `deploy`. This will have a folder for each server process that needs to run. Inside those folders, at least a `start.sh` and `stop.sh` should be present. This is a file listing from a project with a Node server backed by a Mongo database.
 
-```
+```tree
 % tree
 .
 └── src

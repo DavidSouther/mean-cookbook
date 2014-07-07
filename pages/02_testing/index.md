@@ -9,11 +9,14 @@ Testing is a great, sane technique for developers to have confidence in their co
 1. **Logging**
 1. **Coverage**
 
-### Angular
-1. **$httpBackend**
-1. **Managing Injections**
-1. **Rendering Directives**
-1. **Coverage**
+### [Angular](/02_testing/02_angular)
+
+Angular was built from the ground up to be testable by developers who fundamentally belive in the power of testability. As such, Angular provides many features and libraries that ease testing, as well as being designed in a way that testing fits in well with development. The most common testing scenarios have recipes here, and other tests are provided throughout the book. Before diving in to these recipes, feel free to familiarize yourself with the [testing gruntfile](/02_testing/02_angular).
+
+1. **[$httpBackend](/02_testing/02_angular/01_httpBackend)**
+1. **[Managing Injections](/02_testing/02_angular/02_injections)**
+1. **[Rendering Directives](/02_testing/02_angular/03_rendering)**
+1. **[Coverage](/02_testing/02_angular/04_coverage)**
 
 ### Integration / Feature
 1. **cucubmberjs**, *qcumber*, *qcumberbatch*

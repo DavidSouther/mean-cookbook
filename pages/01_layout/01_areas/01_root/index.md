@@ -10,7 +10,7 @@ The root of a project easily gets overloaded with intermediate files.
 
 The files in the project root should be limited to editable, project wide configuration, and one folder, `src/`, that all editable source code lives in.
 
-```
+```tree
 % tree -a -L 1 --dirsfirst
 .
 ├── .git # Managed by [git][git], for version control.

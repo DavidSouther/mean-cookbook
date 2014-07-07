@@ -7,7 +7,8 @@ title: Server Layout
 Components in an Express application have several types of modules.
 
 ### Solution
-```
+
+```tree
 .
 └── src
     ├── client
