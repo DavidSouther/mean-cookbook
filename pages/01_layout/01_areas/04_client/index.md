@@ -101,7 +101,9 @@ Similar to the [server layout][server_layout], the client code is separated alon
 
 ### Discussion
 
-There are many ways to turn this directory structure into served code on the client.
+There are many ways to turn this directory structure into served code on the client. [Grunt][gruntjs] is the most popular JS build tool, though many others are also viable. These tools take the source directory, pass it through a series of transformations, and store the finished file elsewhere in the project structure (usually `build/`). Other tools, like [stassets][stassets], work as an express middleware. Because they operate entirely in memory and don't write to disk, these are much faster; however, they generally offer less flexibility. Stassets is built to handle project structures like this one.
 
 
 [server_layout]: /01_layout/01_areas/03_server
+[stassets]: https://www.npmjs.org/package/stassets
+[gruntjs]: http://gruntjs.org
