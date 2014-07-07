@@ -97,7 +97,7 @@ describe 'Site', ->
                 Site.index.pages.should.deep.equal index
 ```
 
-This test is a good layout for backend tests. It begins with declaring dependencies on the modules `flipflops.site` and `flipflops.site.mock`. The second is that module we just defined with the mock data. It then injects the $httpBackend to a script local variable. Finally, it passes the `httpBackend` helper (see the [overview][/02_testing/02_angular] on angular testing) the url/data mappings from the mock, before continuing on to the actual tests.
+This test is a good layout for backend tests. It begins with declaring dependencies on the modules `flipflops.site` and `flipflops.site.mock`. The second is that module we just defined with the mock data. It then injects the $httpBackend to a script local variable. Finally, it passes the `httpBackend` helper (see the [overview](/02_testing/02_angular) on angular testing) the url/data mappings from the mock, before continuing on to the actual tests.
 
 Both tests inject the `Site`, as exported from `flipflops.site`, to the `it` test block. Both start with flushing the http cache. Because each module is reloaded on each new describe block, this give the test writer control over when the `$http` services will be executed. This then allows tests to assert on both pre and post request state. Finally, both tests run through some basic assertions.
 
@@ -105,4 +105,4 @@ Both tests inject the `Site`, as exported from `flipflops.site`, to the `it` tes
 
 The `$httpBackend` service is one of several modules provided by the Angular team to ease testing. Its `flush()` method, along with similar methods on `$timeout` and other async services, make testing much simpler by creating explicit flow constructs around asynchronous code. Given JavaScript's implicit single-threaded nature, this approach is not frought with the concurrency perils other languages might face.
 
-[flipflops]:
+[flipflops]: https://github.com/DavidSouther/flipflops
