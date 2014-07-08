@@ -343,9 +343,77 @@ module.exports = (grunt)->
 
 This Gruntfile is fully featured and used in several projects. It takes `src/client`, and builds those to this.
 
+```tree
+build/client
+├── all.css
+├── app.js
+├── index.html
+├── print.css
+├── screen.css
+├── templates.js
+└── vendors
+    ├── angular
+    │   ├── angular.js
+    │   ├── angular.min.js
+    │   ├── angular.min.js.gzip
+    │   └── angular.min.js.map
+    ├── angular-bootstrap
+    │   ├── bower.json
+    │   ├── ui-bootstrap-tpls.js
+    │   ├── ui-bootstrap-tpls.min.js
+    │   ├── ui-bootstrap.js
+    │   └── ui-bootstrap.min.js
+    ├── angular-cookies
+    │   ├── angular-cookies.js
+    │   ├── angular-cookies.min.js
+    │   └── angular-cookies.min.js.map
+    ├── angular-resource
+    │   ├── angular-resource.js
+    │   ├── angular-resource.min.js
+    │   └── angular-resource.min.js.map
+    ├── angular-route
+    │   ├── angular-route.js
+    │   ├── angular-route.min.js
+    │   └── angular-route.min.js.map
+    ├── angular-ui-codemirror
+    │   ├── ui-codemirror.js
+    │   └── ui-codemirror.min.js
+    ├── bootstrap
+    │   └── dist
+    │       ├── css
+    │       │   ├── bootstrap-theme.css
+    │       │   ├── bootstrap-theme.css.map
+    │       │   ├── bootstrap-theme.min.css
+    │       │   ├── bootstrap.css
+    │       │   ├── bootstrap.css.map
+    │       │   └── bootstrap.min.css
+    │       ├── fonts
+    │       │   ├── glyphicons-halflings-regular.eot
+    │       │   ├── glyphicons-halflings-regular.svg
+    │       │   ├── glyphicons-halflings-regular.ttf
+    │       │   └── glyphicons-halflings-regular.woff
+    │       └── js
+    │           ├── bootstrap.js
+    │           └── bootstrap.min.js
+    ├── codemirror
+    │   ├── lib
+    │   │   ├── codemirror.css
+    │   │   └── codemirror.js
+    │   ├── mode
+    │   │   └── python
+    │   │       └── python.jss
+    │   └── theme
+    │       └── monokai.css
+    └── css-social-buttons
+        └── css
+            ├── zocial-regular-webfont.eot
+            ├── zocial-regular-webfont.svg
+            ├── zocial-regular-webfont.ttf
+            ├── zocial-regular-webfont.woff
+            └── zocial.css
 ```
-### TODO tree of compiled build/ folder.
-```
+
+If the build file chose to minify the vendors, rather than copying them, the build would be even smaller.
 
 [server_layout]: /01_layout/01_areas/03_server
 [stassets]: https://www.npmjs.org/package/stassets
