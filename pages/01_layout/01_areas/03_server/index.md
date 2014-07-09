@@ -53,7 +53,7 @@ Components in an Express application have several types of modules.
             └── test.coffee
 ```
 
-In this project, the entry point is through `server.coffee`, which will: load the various configurations, wire the necessary handlers, and generally perform the server's base setup. Then, each component will have its own set of files to perform specific server tasks. Some are pertinent to the application, like `students` and `submissions`. Some are general to an area of business concern, like the `auth` folder. These all have a few key pieces in common, but that is only by convention.
+In this project, the entry point is through `server.coffee`. It will load the various configurations, wire the necessary handlers, and generally perform the server's base setup. Then, each component will have its own set of files to perform specific server tasks. Some are pertinent to the application, like `students` and `submissions`. Some are general to an area of business concern, like the `auth` folder. These all have a few key pieces in common, but that is only by convention.
 
 Any file named `handler`, by convention, returns a middleware factory. A middleware factory is a function that takes a configuration object, and returns an express middleware function. See the chapter on [servers][server] for more. A file named `route`, by convention, exports a function that takes an Express application and attaches routes to that app. Files called `model` can export an ORM model definition (see [restify][restify] for an example). Files named `test` define [mocha tests][mocha_server] for that server component. Any other file can be created for a component as needed.
 
@@ -75,6 +75,7 @@ routers = (app)->
         'leaders'
         'hunts'
         'submissions'
+
         'api'
     ].forEach (api)->
         require("./#{api}/route")(app)

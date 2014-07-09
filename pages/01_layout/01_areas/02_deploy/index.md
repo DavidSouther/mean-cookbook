@@ -39,6 +39,6 @@ The mongo server has a few additional scripts to handle database deployment. The
 
 ### Discussion
 
-While the sample app only has a mongo and a node server, any server process which needs start and stop before the application is running can go here. Having a consistent set of shell scripts for deploying pieces of a stack eases development long term. Sysops teams have a consistent way to interact with the application. This consistency helps new devs quickly troubleshoot any changes they might need to make to the runtime setup. Having these scripts in their own area of the project allows the technologies to grow seperately from any one portion of the source code itself. For more details on what to put in these scripts, see the chapter on [deployment][deployment].
+While the sample app only has a mongo and a node server, any server process which needs start and stop before the application is running can go here. Having a consistent set of shell scripts for deploying pieces of a stack eases development long term. Sysops teams have a consistent way to interact with the application. This consistency helps new devs quickly troubleshoot any changes they might need to make to the runtime setup. Having these scripts in their own area of the project allows the technologies to grow, seperately from any one portion of the source code itself. For more details on what to put in these scripts, see the chapter on [deployment][deployment].
 
 [deployment]: /03_deployment
