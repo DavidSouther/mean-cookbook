@@ -1,0 +1,13 @@
+._github
+    h3 Commits for {{ repo.name }}
+    ._error(ng-show="error")
+        | There was an error querying github.
+        span._message {{ error }}
+    ol._commits(ng-show="!error")
+        li(
+            ng-repeat="commit in repo.commits"
+        )
+            a(ng-href="{{ commit.html_url }}") {{ commit.commit.message }}
+            span by
+            a(ng-href="{{ commit.author.url }}")
+                | {{ commit.commit.author.name }}
