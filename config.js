@@ -6,5 +6,6 @@ module.exports = {
         subtitle: 'SPA Recipes for any team',
         author: 'David Souther',
         copyright: '2014'
-    }
+    },
+    themes: ['twitter']
 };
