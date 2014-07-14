@@ -62,8 +62,7 @@ angular.module('flipflops.site.mock', [])
             body: """Some text for chapter 2 Intro."""
 ```
 
-To mock the data, we first define a new angular module `flipflops.site.mock`. That module has one export, a `value` to be injected for the test as `SiteMock`.
-That value has a key/value mapping of http endpoints to strings of JSON data. Those keys are then available to inject into the provider test.
+To mock the data, we first define a new angular module `flipflops.site.mock`. That module has one export, a `value` to be injected for the test as `SiteMock`. That value has a key/value mapping of http endpoints to strings of JSON data. Those keys are then available to inject into the provider test.
 
 ```coffeescript
 describe 'Site', ->
@@ -72,7 +71,7 @@ describe 'Site', ->
 
         $httpBackend = null
         beforeEach -> inject (_$httpBackend_)->$httpBackend = _$httpBackend_
-        beforeEach -> inject (SiteMock)-> httpBackend SiteMock
+        beforeEach -> inject (SiteMock)-> httpBackend SiteMock, afterEach
 
         it 'sets basic metadata', inject (Site)->
             $httpBackend.flush()
@@ -105,4 +104,22 @@ Both tests inject the `Site`, as exported from `flipflops.site`, to the `it` tes
 
 The `$httpBackend` service is one of several modules provided by the Angular team to ease testing. Its `flush()` method, along with similar methods on `$timeout` and other async services, make testing much simpler by creating explicit flow constructs around asynchronous code. Given JavaScript's implicit single-threaded nature, this approach is not frought with the concurrency perils other languages might face.
 
-[flipflops]: https://github.com/DavidSouther/flipflops
+The only piece of magic left for the solution is the implementation of the httpBackend method stubbed out in the [last section](../). It's full code should be these few lines:
+
+```coffeescript
+# src/client/tools/
+if angular.mock
+    window.httpBackend = angular.mock.httpBackend = (data, afterEach = ->)->
+        inject ($httpBackend)->
+            for path, val of data
+                $httpBackend.whenGET(path).respond(200, val)
+            afterEach ->
+                $httpBackend.verifyNoOutstandingExpectation()
+                $httpBackend.verifyNoOutstandingRequest()
+
+```
+
+This uses `$httpBackend::whenGET` to create an http 200 response for each defined endpoint. The $httpBackend service has much more configuration possible, including rudimentary routing and path matching, any HTTP status code, and asserion on `POST` and `GET` parameters. The [documentation][httpBackendDocs] is a great place to go when building tests needing more advanced HTTP mocking.
+
+flipflops: https://github.com/DavidSouther/flipflops
+httpBackendDocs: https://docs.angularjs.org/api/ngMock/service/$httpBackend
