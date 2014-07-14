@@ -248,80 +248,6 @@ module.exports = (grunt)->
                     'build/client/app.js': appFileOrdering
                         .filter (file)-> file.match(/\.coffee$/)
 
-    # butt - Browser Under Test Tools
-    butt = []
-    unless process.env['DEBUG']
-        if process.env['BAMBOO']
-            butt = ['PhantomJS']
-        else
-            butt = ['Chrome']
-
-    preprocessors =
-        'src/client/**/*test.coffee': [ 'coffee' ]
-        'src/client/**/*mock.coffee': [ 'coffee' ]
-        'src/client/tools/*.coffee': [ 'coffee' ]
-        'src/client/**/*.jade': [ 'jade', 'ng-html2js' ]
-
-    cover =
-        if process.env.DEBUG and not process.env.COVER
-            'coffee'
-        else
-            'coverage'
-
-    for type in appFileOrdering
-        if type.indexOf('.coffee') > -1
-            preprocessors[type] = [cover]
-
-
-    ###
-    After defining a few properties, including whether to run coverage
-    preprocessors, grunt-recurse's Config property allows us to continue adding
-    config definitions.
-    ###
-    grunt.Config =
-        karma:
-            ###
-            Configure Karma to run mocha tests on the project.
-            ###
-            client:
-                options:
-                    browsers: butt
-                    frameworks: [ 'mocha', 'sinon-chai' ]
-                    reporters: [ 'spec', 'junit', 'coverage' ]
-                    singleRun: true,
-                    logLevel: 'INFO'
-                    ###
-                    Preprocessors include ng-jade, coverage, etc.
-                    ###
-                    preprocessors: preprocessors
-                    files: [
-                        # 'bower_components/jquery/jquery.js'
-                        'bower_components/angular/angular.js'
-                        'bower_components/angular-route/angular-route.js'
-                        'bower_components/angular-resource/angular-resource.js'
-                        # 'bower_components/angular-animate/angular-animate.js'
-                        'bower_components/angular-cookies/angular-cookies.js'
-                        'bower_components/angular-mocks/angular-mocks.js'
-                        'src/client/**/*mock.coffee'
-                        'src/client/tools/**/*'
-                        appFileOrdering
-                        grunt.expandFileArg('src/client', '**/')
-                    ].reduce(flatten, [])
-                    ngHtml2JsPreprocessor:
-                        cacheIdFromPath: jadeTemplateId
-                        moduleName: 'teals.templates'
-                    junitReporter:
-                        outputFile: 'build/reports/karma.xml'
-                    coverageReporter:
-                        type: 'lcov'
-                        dir: 'build/reports/coverage/'
-
-    grunt.registerTask 'testClient',
-        'Run karma tests against the client.',
-        [
-            'karma:client'
-        ]
-
     grunt.registerTask 'buildClient',
         'Prepare the build/ directory with static client files.',
         [
@@ -336,7 +262,7 @@ module.exports = (grunt)->
     grunt.registerTask 'client',
         'Prepare and test the client.',
         [
-            'testClient'
+            'testClient' # See the section on Angular in the Testing chapter
             'buildClient'
         ]
 ```
