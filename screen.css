@@ -1,0 +1,197 @@
+footer.PageNav {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: distribute;
+  -moz-box-pack: distribute;
+  -o-box-pack: distribute;
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+@media (min-width: 77em) {
+  footer.PageNav {
+    display: block;
+  }
+  footer.PageNav a {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1.5em;
+    background: #eee;
+  }
+  footer.PageNav a:hover {
+    background: #bbb;
+  }
+  footer.PageNav a ._twist {
+    display: block;
+  }
+  footer.PageNav a._previous {
+    left: 0;
+    -webkit-border-radius: 10px 0 0 10px;
+    border-radius: 10px 0 0 10px;
+  }
+  footer.PageNav a._previous ._twist {
+    -webkit-transform: rotate(-90deg) translate(-5em);
+    -moz-transform: rotate(-90deg) translate(-5em);
+    -o-transform: rotate(-90deg) translate(-5em);
+    -ms-transform: rotate(-90deg) translate(-5em);
+    transform: rotate(-90deg) translate(-5em);
+  }
+  footer.PageNav a._next {
+    right: 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  footer.PageNav a._next ._twist {
+    -webkit-transform: rotate(90deg) translate(3em);
+    -moz-transform: rotate(90deg) translate(3em);
+    -o-transform: rotate(90deg) translate(3em);
+    -ms-transform: rotate(90deg) translate(3em);
+    transform: rotate(90deg) translate(3em);
+  }
+}
+
+@media (min-width: 77em) {
+  section.Content {
+    max-width: 45em !important;
+  }
+  section.Content article {
+    padding: 2em;
+  }
+}
+
+.Page > main[role="main"] {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.Page > main[role="main"] > nav[role="navigation"] {
+  -webkit-box-ordinal-group: -1;
+  -moz-box-ordinal-group: -1;
+  -o-box-ordinal-group: -1;
+  -ms-flex-order: -1;
+  -webkit-order: -1;
+  order: -1;
+}
+@media (min-width: 64em) {
+  .Page > main[role="main"] {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -o-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: distribute;
+    -moz-box-pack: distribute;
+    -o-box-pack: distribute;
+    -ms-flex-pack: distribute;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .Page > main[role="main"] > section.Content {
+    max-width: 32em;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+  }
+  .Page > main[role="main"] > nav[role="navigation"],
+  .Page > main[role="main"] > aside[role="complementary"] {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 0 0 16em;
+    -ms-flex: 0 0 16em;
+    flex: 0 0 16em;
+  }
+}
+
+footer[role="contentinfo"] {
+  color: #fff;
+  background: #a9a9a9;
+}
+
+.Sidebar > section {
+  margin: 0.5em 0;
+  padding: 0.25em 1em;
+  background-color: #fafad2;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  overflow: scroll;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  background: #f8f8f8;
+}
+
+section.Content {
+  -webkit-perspective: 10000;
+  -moz-perspective: 10000;
+  -ms-perspective: 10000;
+  perspective: 10000;
+  overflow: hidden;
+}
+section.Content ui-view {
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -o-transform-origin: left top;
+  -ms-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+section.Content ui-view.ng-leave {
+  position: absolute;
+  top: 0;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -o-transition: 0.6s;
+  -ms-transition: 0.6s;
+  transition: 0.6s;
+  height: 100%;
+}
+section.Content ui-view.ng-leave-active {
+  -webkit-transform: rotateX(30deg) rotateY(-115deg);
+  -moz-transform: rotateX(30deg) rotateY(-115deg);
+  -o-transform: rotateX(30deg) rotateY(-115deg);
+  -ms-transform: rotateX(30deg) rotateY(-115deg);
+  transform: rotateX(30deg) rotateY(-115deg);
+}

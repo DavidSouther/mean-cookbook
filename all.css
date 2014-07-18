@@ -1,0 +1,118 @@
+.PostList time {
+  margin: 0;
+  float: right;
+  color: #808080;
+  font-size: smaller;
+}
+
+section.Content {
+  text-align: justify;
+  overflow: hidden;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
+section.Content ui-view {
+  display: block;
+  position: relative;
+  width: 100%;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  background: #fffffe;
+}
+section.Content ui-view article header p:before {
+  font-style: italic;
+  color: #808080;
+}
+section.Content ui-view article header ._publish-date {
+  color: #808080;
+  float: right;
+  margin: 0;
+}
+section.Content ui-view article header ._publish-date:before {
+  content: 'Posted: ';
+  font-style: italic;
+}
+section.Content ui-view article header ._author:before {
+  content: 'By: ';
+}
+@media (min-width: 77em) {
+  section.Content {
+    max-width: 45em !important;
+  }
+  section.Content article {
+    padding: 2em;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Merriweather', sans-serif;
+}
+
+.Header {
+  padding: 0 2em;
+  color: #fff;
+  background-color: #000;
+  font-family: 'Quattrocento', serif;
+}
+.Header h1 {
+  display: inline-block;
+  letter-spacing: 0.5;
+}
+.Header h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+.Header h2 {
+  display: inline-block;
+  letter-spacing: 0.2;
+}
+@media (min-width: 32em) {
+  .Header h2 {
+    float: right;
+  }
+}
+
+.Footer {
+  padding: 0.5em 0;
+  text-align: center;
+  font-size: smaller;
+}
+
+.Navigation {
+  background-color: #fafad2;
+  padding: 0.25em 1em;
+  margin: 0.5em 0;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+.Navigation > ul {
+  margin-left: 0.5em;
+}
+.Navigation ul {
+  list-style: circle;
+  padding-left: 0.5em;
+}
+.Navigation ul li {
+  padding-bottom: 0.25em;
+}
+
+body {
+  margin: 0;
+  font-family: 'Merriweather', sans-serif;
+}
+
+pre {
+  padding: 0.25em;
+  overflow: scroll;
+  border: thin solid #808080;
+}
+
+.Sidebar ._github ._commits span {
+  margin: 0 0.25em;
+}
+.Sidebar ._github ._commits img {
+  height: 60px;
+  width: 60px;
+}
