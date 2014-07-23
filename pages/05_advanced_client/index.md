@@ -11,12 +11,14 @@ Injecting outside the box, Angular provides a great paradigm to build fantastica
 
 ### Complex UX Controls
 
+1. **Filters**
 1. **Tables**
 1. **Modals**
 1. **Wizards**
 
 ### Wrapping HTML5 as Services
 
+1. **Providers**
 1. **LocalStorage**
 1. **FileReader**
 1. **Geolocation**

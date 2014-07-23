@@ -4,14 +4,15 @@ title: Client
 
 The client, in the MEAN stack, is anything that runs on a user's device, outside the server. In practice, this means code that is running in a browser, or in a WebView on a mobile device. Angular provides many framework utilities, including dependency injection for application management; a complete MVVM architecture; extensible HTML components; and a full http & REST suite. There are also many techniques to manage CSS, a common contributor of technical debt to large web applications.
 
-### Organization
-1. **Services**
-1. **Controllers**
+### Overview
+1. **Modules**
+1. **Scope**
+    1. *Controllers*
 1. **Directives**
-1. **Filters**
-1. **Providers**
+    1. *Templates*
 
 ### Data
+1. **Services**
 1. **$http**
 1. **$resource**
 1. **Restangular**
