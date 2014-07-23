@@ -8,6 +8,8 @@ Components in an Express application have several types of modules.
 
 ### Solution
 
+This is an example `server/` folder from a (smallish) production application, showing the various pieces of each component in the data layer.
+
 ```tree
 .
 └── src
@@ -57,7 +59,7 @@ In this project, the entry point is through `server.coffee`. It will load the va
 
 Any file named `handler`, by convention, returns a middleware factory. A middleware factory is a function that takes a configuration object, and returns an express middleware function. See the chapter on [servers][server] for more. A file named `route`, by convention, exports a function that takes an Express application and attaches routes to that app. Files called `model` can export an ORM model definition (see [restify][restify] for an example). Files named `test` define [mocha tests][mocha_server] for that server component. Any other file can be created for a component as needed.
 
-Business orthagonal pieces also exist, but can generally be considered part of the same component structure. The `auth` component, which ties in to passport, is a great example in this project.
+Business orthogonal pieces also exist, but can generally be considered part of the same component structure. The `auth` component, which ties in to passport, is a great example in this project.
 
 ### Discussion
 

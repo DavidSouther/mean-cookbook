@@ -8,6 +8,8 @@ Components in an Angular application have several ways to fit into Angular's mod
 
 ### Solution
 
+This is an example `client/` folder from a (smallish) production application, showing the various pieces of each component in the data layer.
+
 ```tree
 .
 └── src
