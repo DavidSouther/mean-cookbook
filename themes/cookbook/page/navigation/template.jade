@@ -1,0 +1,7 @@
+.Navigation
+    h3 Chapters
+    ol
+        li(ng-repeat="path in site.index.chapters")
+            a(
+                ui-sref="page({path:site.link(path)})"
+            ) {{ site.files[path].front.title }}

@@ -7,5 +7,5 @@ module.exports = {
         author: 'David Souther',
         copyright: '2014'
     },
-    themes: ['twitter', 'github', 'asides']
+    themes: ['twitter', 'github', 'asides', 'cookbook']
 };

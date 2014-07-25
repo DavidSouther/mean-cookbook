@@ -1,0 +1,9 @@
+.Navigation
+    ol
+        counter-reset item
+        list-style none
+
+        li
+            a:before
+                content counter(item) ": "
+                counter-increment item
