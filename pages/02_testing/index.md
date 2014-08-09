@@ -5,6 +5,9 @@ title: Testing
 Testing is a great, sane technique for developers to have confidence in their code. While learning how to test can be daunting to many teams, the community support and tooling for testing in the MEAN world is sublime. Teams don't have to test first, but with the techniques in this chapter, they can test when they want. These recipes cover all levels of the SPA stack, from unit testing through full user integration and regression tests, with code coverage tools along the way.
 
 ### Server
+
+Node.js servers are 
+
 1. **Supertest**
 1. **Logging**
 1. **Coverage**

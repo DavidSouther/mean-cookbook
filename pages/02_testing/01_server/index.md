@@ -109,7 +109,7 @@ describe 'Activity Window', ->
 
 We can configure Mocha using `grunt-mocha-test`. In our gruntfile, the server test section is short and sweet.
 
-```coffescript
+```coffeescript
 # ./src/server/Gruntfile.coffee
 process.env.LOG_LEVEL = 'error'
 module.exports = (grunt)->
@@ -148,7 +148,12 @@ Done, without errors.
 
 ### Discussion
 
-Using Mocha as a test runner
+Using Mocha as a test runner handles orchestrating the various tests. The Chai library provides several flavors of assertion handling. Teams can choose the flavor that suits them best; once decided, the tests largely proceed along the same guidelines.
 
-[mocha]:
-[chai]:
+Structure code with one class or module per file. Create tests in a seperate file, with the same name, and a `.test.coffee` extension. In the test, require the module using a relative path - `var activity = require('./activity');`. Structure your tests along blocks that work, conceptual, for the thing you're testing. Generally, one top level `describe` block for the component as a whole, one for component setup/teardown, and one each for broad types of functionality. Then, have one test case per business requirement or user story (broken in to some detail). These test cases should follow the regular set up / operate / assert flow.
+
+For Mocha, I personally prefer the **BDD** flavor; using `describe(module, fn)`, `it(test, fn)`, `beforeEach(fn)` etc. Mocha also provides **TDD** (`suite`, `test`, `setup`) and **exports** (using a deep exported object); choose the flavor that works best for your team ([Mocha Interface Documentation][mocha_interfaces]). For assertions, I prefer the **should** flavor; `listOfThings<wbr>.length<wbr>.should<wbr>.equal(3)`, `returnValue<wbr>.should<wbr>.equal(false)`, `dataStruct<wbr>.should<wbr>.have<wbr>.property('foo')<wbr>.with<wbr>.value('bar')`. Chai also supports flavors for **expect** (`expect(listOfThings.length)<wbr>.to<wbr>.equal(3)`, `expect(returnValue)<wbr>.to<wbr>.equal(false)`, `expect(dataStruct)<wbr>.to<wbr>.have<wbr>.property('foo')<wbr>.with<wbr>.value('bar')`) and **assert** (`assert(listOfThings.length == 3)`, `assert<wbr>.isFalse(returnValue)`, `assert<wbr>.isDefined(dataStruct) ; assert<wbr>.strictEqual(dataStruct.foo, 'bar')`). In any flavor, all the assertions allow an optional final string property to print a human-readable error when the assertion fails.
+
+[mocha]: http://visionmedia.github.io/mocha/
+[chai]: http://chaijs.com/
+[mocha_interfaces]: http://visionmedia.github.io/mocha/#interfaces

@@ -20,17 +20,19 @@ The files in the project root should be limited to editable, project wide config
 ├── node_modules # Managed by [npm][npm] for server and build dependencies.
 ├── run # Available for db files and other long-term server persistance.
 ├── tmp # Available for PIDs and other short-term server persistence.
-├── src # The project's source code. The only directory whose code can be edited.
+├── src # The project's source code. The only directory where code can be edited.
 ├── .coffeelintrc # Project coffee linting rules.
 ├── .jshintrc # Project javascript linting rules.
 ├── .jscsrc # Project javascript code style rules.
 ├── .gitignore # Project git ignores, which includes above directories.
 ├── Gruntfile.coffee # Grunt build configuration (or Gulpfile.js, etc).
-├── README.md # Project README. Should include a brief overview of the project and a quickstart guide, at minimum.
+├── README.md # Project README. Should include a brief overview of the project
+        and a quickstart guide, at minimum.
 ├── app.js # Backend entry point to the application, by convention.
 ├── newrelic.js # DevOps configuration.
 ├── bower.json # Configuration for client dependencies.
-└── package.json # Main project configuration, as well as build and server dependencies.
+└── package.json # Main project configuration, as well as build and server
+        dependencies.
 ```
 
 ## Discussion
